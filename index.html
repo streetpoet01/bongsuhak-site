@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>내신 범위 출제 · 봉수학</title>
+<meta name="description" content="봉수학 — 학교와 시험 범위만 고르면 그 학교 교과서에 맞춘 쌍둥이·변형 문제 시험지와 정답·해설을 바로 받는 학원 선생님용 출제 서비스. Built with Claude.">
+<link rel="icon" href="assets/logo-emblem.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{--red:#c4161c;--red-d:#9e1015;--red-soft:#fdecec;--ink:#1d1d1f;--sub:#5b5b63;--line:#e6e6ea;--bg:#f7f7f9;--paper:#fff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Pretendard,-apple-system,"Malgun Gothic",sans-serif;color:var(--ink);line-height:1.65;word-break:keep-all;background:var(--paper)}
+a{color:var(--red)}
+img{max-width:100%}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* 머리 */
+header.top{border-bottom:1px solid var(--line);background:rgba(255,255,255,.92);backdrop-filter:blur(8px);position:sticky;top:0;z-index:5}
+header.top .wrap{display:flex;align-items:center;gap:14px;height:68px}
+header.top img{height:34px}
+header.top .site{font-weight:800;font-size:18px;letter-spacing:-.01em}
+header.top .tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:99px;padding:2px 10px;white-space:nowrap}
+header.top nav{margin-left:auto;display:flex;gap:22px;font-size:14px}
+header.top nav a{color:var(--sub);text-decoration:none}
+header.top nav a:hover{color:var(--ink)}
+header.top nav a.hl{color:var(--red);font-weight:700}
+
+/* 히어로 */
+.hero{padding:72px 0 48px;background:linear-gradient(180deg,#fff 0%,var(--bg) 100%)}
+.kicker{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px;color:var(--sub)}
+.kicker .co{font-weight:700;color:var(--ink)}
+.kicker .dot{width:4px;height:4px;border-radius:50%;background:#c9c9cf}
+.badge{display:inline-block;background:var(--red-soft);color:var(--red-d);font-weight:700;font-size:13px;border-radius:99px;padding:4px 12px}
+h1{font-size:46px;line-height:1.22;margin:16px 0 14px;letter-spacing:-.025em}
+h1 small{display:block;font-size:16px;color:var(--sub);font-weight:600;margin-top:10px;letter-spacing:0}
+.lead{font-size:19px;color:#333;max-width:760px;margin:0}
+.ctas{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.cta{display:inline-block;background:var(--red);color:#fff;text-decoration:none;font-weight:700;padding:12px 22px;border-radius:10px}
+.cta.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.cta:hover{filter:brightness(.96)}
+.shot{margin-top:40px;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.08);background:#fff}
+.shot img{display:block;width:100%;margin-top:-3.6%}
+.cap{font-size:13px;color:var(--sub);margin-top:10px}
+
+/* 신뢰 띠 */
+.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
+.strip .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.strip div{padding:18px 16px 18px 0;border-left:1px solid var(--line);padding-left:16px}
+.strip div:first-child{border-left:0;padding-left:0}
+.strip b{display:block;font-size:15px}
+.strip span{font-size:13px;color:var(--sub)}
+
+/* 공통 */
+section{padding:64px 0;border-top:1px solid var(--line);scroll-margin-top:70px}
+.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.12em;color:var(--red);text-transform:uppercase;margin:0 0 8px}
+h2{font-size:30px;margin:0 0 8px;letter-spacing:-.015em}
+.sub{color:var(--sub);margin:0 0 28px;font-size:16px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{border:1px solid var(--line);border-radius:12px;padding:22px;background:#fff}
+.card .n{display:inline-flex;width:28px;height:28px;border-radius:50%;border:2px solid var(--red);color:var(--red);font-weight:800;align-items:center;justify-content:center;font-size:14px}
+.card h3{margin:10px 0 6px;font-size:18px}
+.card p{margin:0;color:#444;font-size:15px}
+
+/* Claude 절 */
+.claude{background:var(--bg)}
+.flow{display:grid;grid-template-columns:1fr auto 1.25fr auto 1fr;gap:12px;align-items:stretch;margin:28px 0 8px}
+.flow .box{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.flow .box h4{margin:0 0 8px;font-size:13px;letter-spacing:.08em;color:var(--sub);text-transform:uppercase}
+.flow .box ul{margin:0;padding-left:18px;font-size:14.5px;color:#333}
+.flow .box li{margin:3px 0}
+.flow .box.core{border:2px solid var(--red);position:relative}
+.flow .box.core h4{color:var(--red)}
+.flow .box.core ol{margin:0;padding-left:20px;font-size:14.5px}
+.flow .box.core li{margin:5px 0}
+.flow .arrow{display:flex;align-items:center;justify-content:center;color:#b8b8c0;font-size:26px}
+.two{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:start;margin-top:36px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.tags span{background:#fff;border:1px solid var(--line);border-radius:8px;padding:7px 12px;font-size:14px}
+.note{background:#fff;border:1px solid var(--line);border-left:4px solid var(--red);border-radius:10px;padding:16px 18px;font-size:15px;color:#333}
+.note b{color:var(--ink)}
+
+/* 회사 */
+.co-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:start}
+.co-grid p{margin:0 0 12px;font-size:16px;color:#333}
+dl.facts{margin:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+dl.facts div{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:12px 16px;border-top:1px solid var(--line);font-size:15px}
+dl.facts div:first-child{border-top:0}
+dl.facts dt{color:var(--sub);margin:0}
+dl.facts dd{margin:0}
+.roadmap{display:flex;gap:12px;flex-wrap:wrap}
+.roadmap .card{flex:1;min-width:240px}
+.roadmap .when{font-size:13px;color:var(--red-d);font-weight:700}
+.tools .card{margin-top:0}
+.tools .steps{grid-template-columns:repeat(2,1fr)}
+
+/* 문의 */
+.contact{background:var(--ink);color:#fff;border-top:none;padding:56px 0}
+.contact .wrap{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
+.contact h2{color:#fff;margin-bottom:6px}
+.contact p{margin:0;color:#cfcfd6}
+.contact a{color:#fff;font-weight:700}
+.contact .mail{display:inline-block;margin-top:14px;background:var(--red);color:#fff;text-decoration:none;font-weight:700;padding:12px 22px;border-radius:10px}
+.contact img{height:34px;opacity:.95}
+
+.en{background:var(--bg)}
+.en p{max-width:860px;color:#333}
+footer{padding:28px 0;font-size:13px;color:var(--sub);border-top:1px solid var(--line)}
+footer .wrap{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+footer img{height:26px}
+
+@media(max-width:780px){
+  h1{font-size:32px}
+  .lead{font-size:17px}
+  header.top nav{display:none}
+  header.top .tag{display:none}
+  .strip .wrap{grid-template-columns:1fr 1fr}
+  .strip div{border-left:0;padding-left:0}
+  .steps,.two,.co-grid,.tools .steps{grid-template-columns:1fr}
+  .flow{grid-template-columns:1fr}
+  .flow .arrow{transform:rotate(90deg);height:28px}
+  .contact .wrap{grid-template-columns:1fr}
+  .contact img{height:28px}
+  section{padding:48px 0}
+}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <img src="assets/logo-horizontal.png" alt="BMW학원 로고">
+  <span class="site">내신 범위 출제</span><span class="tag">가칭 · 시범판</span>
+  <nav><a href="#how">사용 방법</a><a href="#claude" class="hl">Claude 활용</a><a href="#company">회사</a><a href="#books">교재</a><a href="#contact">문의</a></nav>
+</div></header>
+
+<div class="hero"><div class="wrap">
+  <div class="kicker"><span class="co">봉수학</span><span class="dot"></span><span>수학 교육 콘텐츠 · 출제 프로그램</span><span class="dot"></span><span>Built with Claude</span></div>
+  <p style="margin:18px 0 0"><span class="badge">시범판 · 안산 고1 공통수학1·2 · 인문계고 18곳</span></p>
+  <h1>학교와 시험 범위만 고르면,<br>그 학교 교과서에 맞춘 시험지가 나옵니다 <small>내신 범위 출제 · 가칭</small></h1>
+  <p class="lead">학원 선생님이 <b>학교와 시험 범위</b>를 고르면, 그 학교 교과서(출판사 자동)에 맞춘 <b>쌍둥이·변형 문제 시험지</b>와 <b>정답·해설</b>을 바로 받는 출제 서비스입니다. 문제 생성·해설·조판은 Claude 파이프라인으로 만듭니다.</p>
+  <div class="ctas">
+    <a class="cta" href="mailto:bong@bongsuhak.com?subject=%EB%82%B4%EC%8B%A0%20%EB%B2%94%EC%9C%84%20%EC%B6%9C%EC%A0%9C%20%EC%8B%9C%EB%B2%94%ED%8C%90%20%EB%AC%B8%EC%9D%98">시범판 문의하기</a>
+    <a class="cta ghost" href="#claude">Claude를 어떻게 쓰는지 보기</a>
+  </div>
+  <div class="shot"><img src="assets/screen-exam.jpg" alt="내신 범위 출제 화면 시안: 학교 선택, 시험 범위, 문항 고르기, 문제지 미리보기"></div>
+  <p class="cap">화면 시안 · 학교를 고르면 교과서가 자동으로 정해지고, 시험 범위의 교과서 문항마다 쌍둥이 2문항·변형 2문항을 골라 문제지를 바로 미리 봅니다.</p>
+</div></div>
+
+<div class="strip"><div class="wrap">
+  <div><b>학교별 교과서 자동</b><span>학교 공지로 확인한 출판사 정보</span></div>
+  <div><b>쌍둥이 2 · 변형 2</b><span>교과서 문항마다 고르는 구조</span></div>
+  <div><b>시험지 + 정답·해설</b><span>A4 미리보기 그대로 PDF</span></div>
+  <div><b>Built with Claude</b><span>문제 생성·해설·조판 파이프라인</span></div>
+</div></div>
+
+<section id="how"><div class="wrap">
+  <p class="eyebrow">How it works</p>
+  <h2>이렇게 씁니다</h2>
+  <p class="sub">세 번 고르면 시험지와 정답·해설이 나옵니다.</p>
+  <div class="steps">
+    <div class="card"><span class="n">1</span><h3>학교 고르기</h3><p>안산 인문계고 18곳 중 학교를 고르면, 학교 공지로 확인한 그 학교 교과서(출판사)가 자동으로 정해집니다.</p></div>
+    <div class="card"><span class="n">2</span><h3>시험 범위 고르기</h3><p>1·2학기 중간·기말과 과목(공통수학1·2)을 고르고, 학교 공지에 맞춰 단원을 눌러 범위를 맞춥니다.</p></div>
+    <div class="card"><span class="n">3</span><h3>문항 고르고 받기</h3><p>교과서 문항(원본)마다 쌍둥이 2문항(숫자만 다름)·변형 2문항(조건·묻는 것을 바꿈)을 골라 문제지 PDF와 정답·해설 PDF로 받습니다. 한글(hwpx) 출력은 유료판에서 제공할 예정입니다.</p></div>
+  </div>
+  <div class="shot" style="margin-top:28px"><img src="assets/screen-answers.jpg" alt="정답·해설 미리보기 화면 시안"></div>
+  <p class="cap">정답·해설 화면 시안 · 빠른 정답표와 문항별 풀이가 함께 나옵니다.</p>
+</div></section>
+
+<section id="claude" class="claude"><div class="wrap">
+  <p class="eyebrow">Built with Claude</p>
+  <h2>Claude로 만듭니다</h2>
+  <p class="sub">문제 생성부터 해설·조판까지, Anthropic의 Claude를 실제 출제 작업에 쓰고 있습니다. 사이트는 그 작업 방식을 그대로 파이프라인으로 옮긴 것입니다.</p>
+
+  <div class="flow">
+    <div class="box"><h4>입력</h4><ul><li>학교 → 교과서(출판사)</li><li>시험 범위(단원)</li><li>교과서 문항(원본)</li></ul></div>
+    <div class="arrow">→</div>
+    <div class="box core"><h4>Claude 파이프라인</h4><ol>
+      <li><b>문제 생성</b> · 원본마다 쌍둥이·변형 문항을 만들고 정답을 검산합니다.</li>
+      <li><b>해설</b> · 문항별 정답과 풀이를 씁니다.</li>
+      <li><b>조판</b> · 시험지 형식으로 배치해 미리보기와 똑같은 PDF를 냅니다. (hwpx는 유료판)</li>
+    </ol></div>
+    <div class="arrow">→</div>
+    <div class="box"><h4>출력</h4><ul><li>문제지 PDF</li><li>정답·해설 PDF</li><li>선생님이 고른 순서·배치 그대로</li></ul></div>
+  </div>
+
+  <div class="two">
+    <div>
+      <h3 style="margin:0 0 4px">지금 Claude로 하고 있는 일</h3>
+      <p class="sub" style="margin-bottom:0">학원 수업과 교재 제작에서 이미 매일 쓰는 작업들입니다.</p>
+      <div class="tags">
+        <span>쌍둥이·변형 문제 생성과 검산</span>
+        <span>해설 자동 생성 (미주 해설·손글씨 풀이)</span>
+        <span>교재용 그래프·도형 작도</span>
+        <span>PDF → 한글(hwpx) 자동 변환</span>
+        <span>적중예상 시험지·적중분석 자료</span>
+        <span>OMR 채점·성적표</span>
+        <span>캐릭터 손글씨 해설영상</span>
+      </div>
+    </div>
+    <div class="note"><b>왜 Claude인가</b><br>수학 문항은 숫자 하나가 바뀌어도 정답과 풀이가 함께 바뀝니다. 문제를 만들고, 바로 검산하고, 그 풀이를 해설로 쓰는 일을 한 흐름으로 처리할 수 있어서 Claude를 중심에 두었습니다. 사이트의 문제 생성·해설·조판 단계가 모두 이 흐름 위에서 돌아갑니다.</div>
+  </div>
+</div></section>
+
+<section id="company"><div class="wrap">
+  <p class="eyebrow">Company</p>
+  <h2>봉수학</h2>
+  <div class="co-grid">
+    <div>
+      <p>봉수학은 수학 강사 김봉현이 운영하는 수학 교육 콘텐츠 회사입니다. 학원 현장에서 수능·내신 교재와 프린트를 직접 만들어 쓰면서, 그 제작 과정을 Claude로 자동화해 왔습니다.</p>
+      <p>「내신 범위 출제」는 그 작업 방식을 학원 선생님 누구나 쓸 수 있는 서비스로 옮기는 첫 제품입니다. 시범판을 먼저 열고, 유료판에서 범위와 출력 형식을 넓혀 갑니다.</p>
+      <div class="roadmap" style="margin-top:20px">
+        <div class="card"><div class="when">1차 · 시범판</div><h3>학원 강사</h3><p>학교별 내신 대비 시험지를 빠르게 만들어야 하는 학원 선생님.</p></div>
+        <div class="card"><div class="when">유료 전환 이후</div><h3>학생 · 학부모</h3><p>내 학교 교과서와 시험 범위에 맞춘 연습 문제가 필요한 학생과 학부모로 넓힙니다.</p></div>
+      </div>
+    </div>
+    <dl class="facts">
+      <div><dt>상호</dt><dd>봉수학</dd></div>
+      <div><dt>대표</dt><dd>김봉현</dd></div>
+      <div><dt>하는 일</dt><dd>수학 교재·프린트 제작, 출제 프로그램 개발, 학원 운영(BMW학원)</dd></div>
+      <div><dt>제품</dt><dd>내신 범위 출제(시범판), 오이지, 비상에듀 출제기</dd></div>
+      <div><dt>연락처</dt><dd><a href="mailto:bong@bongsuhak.com">bong@bongsuhak.com</a></dd></div>
+      <div><dt>웹</dt><dd>bongsuhak.com</dd></div>
+    </dl>
+  </div>
+</div></section>
+
+<section class="tools"><div class="wrap">
+  <p class="eyebrow">Tools</p>
+  <h2>함께 만드는 출제 도구</h2>
+  <p class="sub">같은 문항 DB와 Claude 파이프라인 위에서 돌아가는 도구들입니다.</p>
+  <div class="steps">
+    <div class="card"><h3 style="margin-top:0">오이지</h3><p>수능 기출·시중 교재 DB에서 문항을 골라 테스트지·오답지를 뽑는 출제 프로그램 (PDF·한글 출력).</p></div>
+    <div class="card"><h3 style="margin-top:0">비상에듀 출제기</h3><p>오이지를 학원 선생님용으로 간추린 버전으로, 매일 10문항 데일리 테스트용입니다.</p></div>
+  </div>
+</div></section>
+
+<section id="books"><div class="wrap">
+  <p class="eyebrow">Books</p>
+  <h2>교재</h2>
+  <p>수능 대수 교재 <b>BK_수능대수</b>(11단원 + 해설 별책)와 <b>BMW 내신 교재·프린트 시리즈</b>를 만들고 있습니다. 교재는 제본해 판매할 계획입니다.</p>
+</div></section>
+
+<section class="contact" id="contact"><div class="wrap">
+  <div>
+    <h2>문의</h2>
+    <p>시범판 사용, 학교·교과서 추가 요청, 교재 문의는 메일로 보내 주세요.</p>
+    <a class="mail" href="mailto:bong@bongsuhak.com">bong@bongsuhak.com</a>
+  </div>
+  <img src="assets/logo-wordmark-white.png" alt="BMW학원">
+</div></section>
+
+<section class="en"><div class="wrap">
+  <p class="eyebrow">About (English)</p>
+  <h2>About Bongsuhak</h2>
+  <p><b>Bongsuhak</b> is a math-education content company run by math instructor Bonghyeon Kim. We write and typeset our own textbooks and worksheets for Korean high-school math (both the national CSAT and school exams), use them in our own academy, and have been automating that production work with Claude.</p>
+  <p><b>내신 범위 출제</b> (working title, “School-Exam Range Builder”) is our first product built on that workflow: an exam-builder for Korean high-school math tutors. A tutor picks a school and its exam range; the service knows that school’s textbook (publisher selected automatically) and, for each textbook problem, offers two “twin” problems (same structure, new numbers) and two variant problems (changed conditions or questions). The tutor assembles a test paper and receives it with answer keys and step-by-step solutions as PDF (HWPX planned for the paid tier). The pilot covers Grade 10 Common Math 1·2 at 18 general high schools in Ansan, Korea.</p>
+  <p><b>How we use Claude:</b> problem generation, answer verification, solution writing and typesetting run as a Claude pipeline — input (school, textbook, exam range, source problems) → Claude (generate twin/variant problems and verify answers, write solutions, typeset) → output (test paper and solutions PDF). Beyond the site, we already use Claude daily to draw graphs and figures, convert PDF to HWPX, build predicted-exam papers and post-exam analyses, grade OMR sheets, and script handwritten-solution videos. First users are private-academy math tutors; after the paid launch we plan to expand to students and parents. Contact: bong@bongsuhak.com</p>
+</div></section>
+
+<footer><div class="wrap">
+  <img src="assets/logo-emblem.png" alt=""><span>봉수학 · 대표 김봉현 · <a href="mailto:bong@bongsuhak.com">bong@bongsuhak.com</a> · bongsuhak.com · © 2026 봉수학</span>
+</div></footer>
+</body>
+</html>
