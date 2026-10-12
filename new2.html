@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>봉수학 — 문제를 잘 만드는 곳</title>
+<meta name="description" content="봉수학은 학교 시험을 연구하고, 수업에 바로 쓰는 교재와 출제 프로그램을 만드는 수학 콘텐츠 스튜디오입니다.">
+<meta property="og:title" content="봉수학 — 문제를 잘 만드는 곳">
+<meta property="og:description" content="학교 시험을 연구하고, 수업에 바로 쓰는 교재와 출제 프로그램을 만듭니다.">
+<meta property="og:url" content="https://bongsuhak.com/">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0c0f;--fg:#f3f1ea;--dim:#9a9a94;--line:rgba(243,241,234,.12);--gold:#d6b46a}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:Pretendard,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;word-break:keep-all}
+a{color:inherit;text-decoration:none}
+.serif{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
+.mono{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+/* 배경: 천천히 움직이는 빛 + 결 */
+.glow{position:fixed;inset:-20%;z-index:0;pointer-events:none;filter:blur(80px);opacity:.55}
+.glow i{position:absolute;border-radius:50%}
+.glow i:nth-child(1){width:46vw;height:46vw;left:48%;top:8%;background:radial-gradient(circle,#2b4f8f 0,transparent 65%);animation:f1 18s ease-in-out infinite alternate}
+.glow i:nth-child(2){width:34vw;height:34vw;left:62%;top:42%;background:radial-gradient(circle,#8a6a2c 0,transparent 65%);animation:f2 22s ease-in-out infinite alternate}
+.glow i:nth-child(3){width:30vw;height:30vw;left:20%;top:60%;background:radial-gradient(circle,#1b2c4f 0,transparent 65%);animation:f1 26s ease-in-out infinite alternate-reverse}
+@keyframes f1{to{transform:translate(-8vw,6vh) scale(1.15)}}
+@keyframes f2{to{transform:translate(6vw,-8vh) scale(.9)}}
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.page{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;padding:0 clamp(20px,4vw,56px)}
+/* 머리 */
+header{display:flex;align-items:center;justify-content:space-between;height:84px}
+.wm{display:flex;align-items:baseline;gap:10px}
+.wm b{font-size:21px;font-weight:800;letter-spacing:-.03em}
+.wm .serif{font-size:19px;color:var(--dim)}
+.top a{margin-left:26px;font-size:14px;color:var(--dim);transition:color .2s}
+.top a:hover{color:var(--fg)}
+/* 본문 */
+.hero{flex:1;display:flex;flex-direction:column;justify-content:center;padding:4vh 0 6vh}
+.hero .mono{display:flex;align-items:center;gap:10px;margin-bottom:28px}
+.hero .mono:before{content:"";width:28px;height:1px;background:var(--gold)}
+h1{margin:0;font-weight:800;letter-spacing:-.055em;line-height:.98;font-size:clamp(64px,11.5vw,176px)}
+h1 .l2{display:block;padding-left:.9em}
+h1 em{font-style:normal;background:linear-gradient(100deg,#f3f1ea 10%,#d6b46a 55%,#f3f1ea 90%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 7s linear infinite}
+@keyframes sh{to{background-position:-200% 0}}
+.sub{display:flex;gap:clamp(24px,6vw,96px);align-items:flex-end;justify-content:space-between;margin-top:clamp(28px,5vh,56px);flex-wrap:wrap}
+.sub .en{font-size:clamp(22px,2.4vw,34px);color:#d9d6cc;line-height:1.2}
+.sub p{margin:10px 0 0;max-width:430px;font-size:16px;line-height:1.75;color:var(--dim)}
+.go{display:inline-flex;align-items:center;gap:14px;padding:16px 18px 16px 26px;border-radius:999px;background:var(--fg);color:#0b0c0f;font-weight:700;font-size:16px;transition:transform .25s,gap .25s}
+.go span{display:inline-flex;width:34px;height:34px;border-radius:50%;background:#0b0c0f;color:var(--fg);align-items:center;justify-content:center;font-size:16px;transition:transform .25s}
+.go:hover{gap:20px}.go:hover span{transform:rotate(-45deg)}
+/* 아래 메뉴 */
+.menu{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+.menu a{position:relative;padding:22px 20px 26px 0;display:flex;flex-direction:column;gap:10px;border-right:1px solid var(--line);overflow:hidden}
+.menu a+a{padding-left:20px}.menu a:last-child{border-right:0}
+.menu b{font-size:clamp(18px,1.6vw,22px);font-weight:700;letter-spacing:-.02em;display:flex;justify-content:space-between;align-items:center}
+.menu b i{font-style:normal;color:var(--dim);transition:transform .25s,color .25s}
+.menu small{font-size:13px;color:var(--dim);line-height:1.5}
+.menu a:after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.menu a:hover:after{transform:scaleX(1)}
+.menu a:hover b i{transform:translate(4px,-4px);color:var(--gold)}
+/* 흐르는 띠 */
+.band{margin:0 calc(-1*clamp(20px,4vw,56px));border-top:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:14px 0}
+.band div{display:inline-block;animation:mq 38s linear infinite}
+.band span{margin:0 26px;font-size:13px;color:var(--dim)}
+.band span.d{color:var(--gold)}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* 등장 */
+.rise{opacity:0;transform:translateY(18px);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+.d1{animation-delay:.05s}.d2{animation-delay:.18s}.d3{animation-delay:.32s}.d4{animation-delay:.48s}
+@keyframes rise{to{opacity:1;transform:none}}
+@media(max-width:760px){
+  .top a:not(.keep){display:none}
+  h1 .l2{padding-left:0}
+  .menu{grid-template-columns:1fr 1fr}
+  .menu a{border-bottom:1px solid var(--line)}.menu a:nth-child(2n){border-right:0}.menu a:nth-child(3){padding-left:0}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}.rise{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="glow"><i></i><i></i><i></i></div><div class="grain"></div>
+<div class="page">
+  <header class="rise d1">
+    <a class="wm" href="./"><b>봉수학</b><span class="serif">Bongsuhak</span></a>
+    <nav class="top"><a href="company.html#work">하는 일</a><a href="company.html#made">만든 것</a><a class="keep" href="company.html#contact">문의</a></nav>
+  </header>
+
+  <main class="hero">
+    <div class="mono rise d1">Math content studio</div>
+    <h1 class="rise d2">문제를<span class="l2">잘 만드는 <em>곳.</em></span></h1>
+    <div class="sub rise d3">
+      <div>
+        <div class="en serif">We make better problems.</div>
+        <p>학교 시험을 연구하고, 수업에 바로 쓰는 교재와 출제 프로그램을 만듭니다.</p>
+      </div>
+      <a class="go" href="company.html">봉수학 알아보기 <span>→</span></a>
+    </div>
+  </main>
+
+  <nav class="menu rise d4">
+    <a href="company.html#work"><span class="mono">01</span><b>하는 일 <i>↗</i></b><small>학교별 내신 연구 · 교재 · 출제 프로그램</small></a>
+    <a href="company.html#how"><span class="mono">02</span><b>일하는 방식 <i>↗</i></b><small>확인 · 분석 · 제작 · 검수</small></a>
+    <a href="company.html#made"><span class="mono">03</span><b>만든 것 <i>↗</i></b><small>오이지 · 비상에듀 출제기 · 교재</small></a>
+    <a href="company.html#about"><span class="mono">04</span><b>대표 소개 <i>↗</i></b><small>현직 수학 강사 김봉현</small></a>
+  </nav>
+  <div class="band"><div>
+    <span>학교별 내신 연구</span><span class="d">✦</span><span>교재·프린트 제작</span><span class="d">✦</span><span>출제 프로그램</span><span class="d">✦</span><span>한글 시험지 조판</span><span class="d">✦</span><span>2022 개정 교육과정</span><span class="d">✦</span><span>bong@bongsuhak.com</span><span class="d">✦</span>
+    <span>학교별 내신 연구</span><span class="d">✦</span><span>교재·프린트 제작</span><span class="d">✦</span><span>출제 프로그램</span><span class="d">✦</span><span>한글 시험지 조판</span><span class="d">✦</span><span>2022 개정 교육과정</span><span class="d">✦</span><span>bong@bongsuhak.com</span><span class="d">✦</span>
+  </div></div>
+</div>
+</body>
+</html>
